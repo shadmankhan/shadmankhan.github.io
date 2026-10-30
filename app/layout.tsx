@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { DM_Sans, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import "./world.css";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description: "Step into Shadman’s world: thoughtful software, independent music, games, research, travel, and the life around them.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`${sans.variable} ${display.variable} ${mono.variable}`}>
