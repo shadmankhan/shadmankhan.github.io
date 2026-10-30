@@ -1,69 +1,55 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, Code, GithubLogo, Sparkle, Star } from "@phosphor-icons/react/ssr";
+import { HouseScene } from "@/components/world/HouseScene";
+import { RoomExplorer } from "@/components/world/RoomExplorer";
+import { profile } from "@/content/public-profile";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="world-home home-universe">
+      <section className="arrival-stage content-width" aria-labelledby="arrival-title">
+        <div className="arrival-stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
+        <div className="arrival-moon" aria-hidden="true" />
+        <div className="arrival-orbit arrival-orbit-one" aria-hidden="true" />
+        <div className="arrival-orbit arrival-orbit-two" aria-hidden="true" />
+
+        <div className="arrival-topline"><span><span className="arrival-live-dot" /> A SMALL WORLD, OPEN DOOR</span><span>LUCKNOW · INDIA <Sparkle size={13} weight="fill" /></span></div>
+        <div className="arrival-layout">
+          <div className="arrival-copy">
+            <span className="arrival-kicker"><Star size={13} weight="fill" /> SOFTWARE ENGINEER · MUSIC MAKER · PLAYER</span>
+            <h1 id="arrival-title">I build software.<br /><span>Curiosity fills the rest.</span></h1>
+            <p>Hey, I’m Shadman. I make full-stack products, write songs as Not Shadman, wander into game worlds, and take the long way home. <strong>This is where it all lives.</strong></p>
+            <div className="arrival-actions">
+              <Link className="arrival-primary" href="#rooms">Wander through my world <ArrowDown size={16} weight="bold" /></Link>
+              <Link className="arrival-secondary" href="/studio"><Code size={16} /> See my work <ArrowUpRight size={14} /></Link>
+            </div>
+            <div className="arrival-handwritten"><span>✳</span> The work matters. So does everything around it.</div>
+          </div>
+
+          <div className="arrival-visual" aria-label="A miniature house with eight clickable rooms">
+            <div className="arrival-visual-halo" aria-hidden="true" />
+            <HouseScene />
+            <div className="arrival-hello" role="note" aria-label="A little character says: Hey, I'm Shadman. Welcome to my world.">
+              <span className="hello-puppet" aria-hidden="true"><i className="hello-hair" /><i className="hello-face" /><i className="hello-eye" /><i className="hello-body" /><i className="hello-arm" /></span>
+              <span><small>YOUR HOST</small><strong>Hey, I’m Shadman!<br />Welcome to my world.</strong></span>
+              <span className="hello-star" aria-hidden="true">✦</span>
+            </div>
+            <div className="arrival-scene-caption"><span>Eight rooms. No wrong door.</span><span><span className="scene-pulse" /> TAP A WINDOW TO WANDER</span></div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <Link className="arrival-scroll" href="#rooms" aria-label="Scroll to choose a room"><span>THE HOUSE TOUR</span><ArrowDown size={14} /></Link>
+      </section>
+
+      <div id="rooms" className="content-width home-explorer-wrap"><RoomExplorer /></div>
+
+      <section className="content-width home-signoff" aria-label="Contact Shadman">
+        <div className="home-signoff-copy"><span className="home-section-eyebrow"><Sparkle size={13} weight="fill" /> WHEN YOU GET TO THE FRONT DOOR</span><h2 className="display">Want to make<br /><em>something useful?</em></h2><p>I’m a full-stack software engineer, open to thoughtful conversations, good questions, and interesting work.</p></div>
+        <div className="home-signoff-actions">
+          <Link className="arrival-primary" href="/about">The short version <ArrowUpRight size={15} /></Link>
+          <a className="home-quick-link" href={`mailto:${profile.email}?subject=Hello%20Shadman`}>Say hello <ArrowUpRight size={14} /></a>
+          <a className="home-quick-link" href={profile.github} target="_blank" rel="noreferrer"><GithubLogo size={16} /> GitHub <ArrowUpRight size={14} /></a>
         </div>
-      </main>
+      </section>
     </div>
   );
 }

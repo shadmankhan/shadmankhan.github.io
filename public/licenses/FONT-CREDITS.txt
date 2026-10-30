@@ -1,0 +1,14 @@
+DM Sans
+Copyright 2014 The DM Sans Project Authors.
+Source: https://github.com/google/fonts/tree/main/ofl/dmsans
+License: SIL Open Font License, Version 1.1 (OFL-1.1.txt)
+
+Fraunces
+Copyright 2018 The Fraunces Project Authors.
+Source: https://github.com/google/fonts/tree/main/ofl/fraunces
+License: SIL Open Font License, Version 1.1 (OFL-1.1.txt)
+
+IBM Plex Mono
+Copyright (c) 2017 IBM Corp. Reserved Font Name: "Plex".
+Source: https://github.com/google/fonts/tree/main/ofl/ibmplexmono
+License: SIL Open Font License, Version 1.1 (OFL-1.1.txt)

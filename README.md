@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shadman’s world
 
-## Getting Started
+A personal portfolio shaped like an explorable house. It is built with Next.js App Router, TypeScript, Motion for React, React Three Fiber, Three.js, D3, and Tailwind CSS.
 
-First, run the development server:
+## Run locally
+
+Use Node.js 22 or later.
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). For a production build:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run typecheck
+npm run lint
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+The app is suitable for Vercel or another Node.js host. Import this repository, use the npm install command `npm ci`, and set the build command to `npm run build`. No environment variables, API keys, or server-side services are required. Set the Node.js runtime to 22 or later.
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Public, editable portfolio data lives in [`content/public-profile.ts`](./content/public-profile.ts). Room names, links, colors, and icons live in [`content/rooms.ts`](./content/rooms.ts). Keep private source profile files out of the repository and deployed bundle. The portfolio excludes personal phone details and confidential employment information by design.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Changing snapshot fields such as currently played games, current reading, music releases, and selected repositories are grouped in the public profile module for straightforward edits. Employment summaries are intentionally high-level. AI tooling experience and areas of learning are labeled separately.
 
-## Deploy on Vercel
+## The world and its rooms
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/` — two-story, open-front house. Every room is a link; the waving guide greets visitors. A semantic illustrated house with the same room links is used at small widths and remains available if WebGL cannot render.
+- `/studio` — work snapshots, repository shelf, AI experience framing, a three-switch desk puzzle, and an explicitly decorative contribution garden.
+- `/arcade` — current and next games, official game-world art, copyable handles, and a keyboard- and touch-friendly memory game.
+- `/music` — an original listening-room scene. Official Spotify and privacy-enhanced YouTube embeds load only after a visitor selects a player. Audio never autoplays.
+- `/library` — current book and DOI links for two research publications.
+- `/journeys` — D3 Natural Earth map with selectable points plus a conventional text list.
+- `/garage` — a fictional manual-gear toy and an original CSS/SVG sedan illustration.
+- `/garden` — selectable interests and an email contact action.
+- `/about` — concise introduction, direct links, and an email request for a résumé (no résumé file was supplied).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The header keeps the four most-used destinations visible and puts every room in a searchable menu (`Ctrl/Cmd + K`). Day/evening appearance persists between visits. Motion respects the operating system’s reduced-motion setting. The house pauses its animation off-screen and the site stays navigable without WebGL.
+
+## Visual assets and sources
+
+The passport photo is not included in the project. The homepage puppet is an invented code-built character, not a portrait. The room hero scenes were generated for this site and exported as optimized WebP files. Game imagery comes from official game and platform pages and is shown as a personal interest gallery. A complete source list is in [`ASSET-MANIFEST.md`](./ASSET-MANIFEST.md). Google Fonts are self-hosted at build time by `next/font`; no font provider request is made by site visitors.
+
+| Asset or package | Use | License / attribution |
+| --- | --- | --- |
+| DM Sans, Fraunces, IBM Plex Mono | Site typography | SIL Open Font License 1.1; see [`FONT-CREDITS.txt`](./public/licenses/FONT-CREDITS.txt) and [`OFL-1.1.txt`](./public/licenses/OFL-1.1.txt). |
+| Phosphor Icons React | Interface icons with duotone room accents | MIT; see [`MIT-phosphor-icons.txt`](./public/licenses/MIT-phosphor-icons.txt). |
+| `world-atlas` / Natural Earth | D3 travel map geography | Package redistribution ISC; see [`ISC-world-atlas.txt`](./public/licenses/ISC-world-atlas.txt). Data is Natural Earth 1:110m country boundaries, version 4.1.0. |
+| D3 | Geographic projection and map paths | ISC/MIT package licenses; see [`MIT-d3.txt`](./public/licenses/MIT-d3.txt) and [`ISC-topojson-client.txt`](./public/licenses/ISC-topojson-client.txt). |
+| Room hero artwork | Studio, music room and arcade scene | Created specifically for this project with ImageGen; 16:9 WebP derivatives are stored under `public/assets/rooms/`. |
+| Game-world art | Final Fantasy XVI, Grand Theft Auto VI, The Witcher 3, and 007 First Light | Official imagery from Square Enix, Rockstar Games, CD PROJEKT RED, and PlayStation. Sources and page links are in [`ASSET-MANIFEST.md`](./ASSET-MANIFEST.md). |
+| House, puppet, car and fallback art | Original code-native illustrations | Built for this project from Three.js geometry, SVG and CSS. |
+
+The same license text files are served from `/licenses/` in the deployed app. Other dependencies retain their upstream licenses.
+
+## Notes
+
+- The 3D house is dynamically imported, uses a bounded device pixel ratio, and has a linked illustration fallback on small screens or rendering failure.
+- External music players are user-initiated; closing or changing a release unmounts the iframe.
+- GitHub activity is linked to the real profile; no activity counts or streaks are fabricated.
+- The gaming YouTube handle is shown without a direct channel URL because one was not verified.
+- The included `app/icon.svg` is original vector artwork.
+- Interface icons use the tree-shakeable `@phosphor-icons/react` package; imports use its SSR-safe icon modules.
+- Large room and game visuals are optimized WebP files; room art is lazy-loaded outside the first arcade scene.

@@ -1,3 +1,8 @@
+export type TravelPlace = { name: string; region: "India" | "United Kingdom"; coordinates: [number, number]; home?: boolean };
+export const travelPlaces: TravelPlace[] = [
+  { name: "Lucknow", region: "India", coordinates: [80.9462,26.8467], home: true }, { name: "Belfast", region: "United Kingdom", coordinates: [-5.93,54.597] }, { name: "London", region: "United Kingdom", coordinates: [-.1276,51.5072] }, { name: "Edinburgh", region: "United Kingdom", coordinates: [-3.1883,55.9533] }, { name: "Scottish Highlands", region: "United Kingdom", coordinates: [-4.2247,57.4778] }, { name: "Udaipur", region: "India", coordinates: [73.68,24.5854] }, { name: "Jaipur", region: "India", coordinates: [75.7873,26.9124] }, { name: "Manali", region: "India", coordinates: [77.1892,32.2432] }, { name: "Shimla", region: "India", coordinates: [77.1734,31.1048] }, { name: "Jibhi", region: "India", coordinates: [77.35,31.59] }, { name: "Nainital", region: "India", coordinates: [79.4636,29.3803] }, { name: "Mumbai", region: "India", coordinates: [72.8777,19.076] }, { name: "Hyderabad", region: "India", coordinates: [78.4867,17.385] }, { name: "Bengaluru", region: "India", coordinates: [77.5946,12.9716] }
+];
+
 export const profile = {
   name: "Shadman Ahmed Khan",
   shortName: "Shadman",
@@ -31,13 +36,28 @@ export const profile = {
   ],
   artist: { name: "Not Shadman", spotify: "https://open.spotify.com/artist/2EBQ9x0MEeygBqgj4VQ7kE", youtube: "https://www.youtube.com/@not.shadman", instagram: "https://www.instagram.com/not.shadman/" },
   favoriteArtists: ["Murtaza Qizilbash", "Samar Jafir", "Rahat Fateh Ali Khan", "Atif Aslam", "Sonu Nigam", "Arijit Singh", "Shreya Ghoshal"],
-  gaming: { current: "Final Fantasy XVI", next: "The Witcher 3", psn: "theShadyLucifer", steam: "shadmanakhan", steamName: "Lucifer", epic: "theShadyLucifer", youtube: "theShadyLucifer", creators: ["theRadBrad", "Battleking"] },
+  gaming: {
+    current: "Final Fantasy XVI",
+    next: "The Witcher 3: Wild Hunt",
+    psn: "theShadyLucifer",
+    steam: "shadmanakhan",
+    steamName: "Lucifer",
+    epic: "theShadyLucifer",
+    youtube: "theShadyLucifer",
+    creators: ["theRadBrad", "Battleking"],
+    worlds: [
+      { title: "Final Fantasy XVI", status: "NOW PLAYING", note: "Current game · October 2026 profile snapshot", image: "/assets/games/final-fantasy-xvi.webp", alt: "Official FINAL FANTASY XVI key art featuring Clive and Ifrit", source: "https://na.finalfantasyxvi.com/en-gb" },
+      { title: "The Witcher 3: Wild Hunt — Remastered", status: "NEXT QUEST", note: "The next game in the queue", image: "/assets/games/witcher-3.webp", alt: "Geralt riding through a dark forest in The Witcher 3", source: "https://www.thewitcher.com/de/en/witcher3" },
+      { title: "Grand Theft Auto VI", status: "VICE CITY", note: "The glow of the city at dusk", image: "/assets/games/gta-vi-vice-city.webp", alt: "Vice City skyline at sunset in Grand Theft Auto VI", source: "https://www.rockstargames.com/VI/media" },
+      { title: "007 First Light", status: "MI6", note: "A little cinematic spycraft", image: "/assets/games/007-first-light.webp", alt: "Young James Bond in official 007 First Light key art", source: "https://www.playstation.com/en-us/games/007-first-light/" }
+    ]
+  },
   publications: [
     { title: "Sign Translation Via Natural Language Processing", year: "2021", journal: "Asian Journal of Research in Computer Science", url: "https://doi.org/10.9734/ajrcos/2021/v11i130251" },
     { title: "Fastest Growing Waste: E-waste", year: "2020", journal: "Asian Journal of Advanced Research and Reports", url: "https://doi.org/10.9734/ajarr/2020/v11i130255" }
   ],
   currentBook: { title: "The Fountainhead", author: "Ayn Rand" },
-  places: ["Lucknow", "Belfast", "London", "Edinburgh", "Scottish Highlands", "Udaipur", "Jaipur", "Manali", "Shimla", "Jibhi", "Nainital", "Mumbai", "Hyderabad", "Bengaluru"],
+  places: travelPlaces,
   car: { make: "Škoda", model: "Slavia", engine: "1.0 TSI", fuel: "Petrol", transmission: "Manual", color: "Black" }
 } as const;
 

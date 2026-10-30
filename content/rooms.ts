@@ -1,15 +1,15 @@
-import type { LucideIcon } from "lucide-react";
-import { BookOpen, CarFront, Code2, Gamepad2, Leaf, Map, Music2, UserRound } from "lucide-react";
+import type { Icon } from "@phosphor-icons/react";
+import { BookOpen, Car, Code, GameController, Leaf, MapTrifold, MusicNotes, User } from "@phosphor-icons/react/ssr";
 
-export type Room = { slug: string; title: string; short: string; label: string; color: string; pale: string; icon: LucideIcon };
+export type Room = { slug: string; title: string; short: string; label: string; color: string; pale: string; icon: Icon };
 
 export const rooms: Room[] = [
-  { slug: "studio", title: "Coding studio", label: "Studio", short: "Ideas, interfaces & experiments", color: "#77947f", pale: "#e4eee3", icon: Code2 },
-  { slug: "arcade", title: "Game room", label: "Arcade", short: "A tiny matching game awaits", color: "#bd7d64", pale: "#f4e1d7", icon: Gamepad2 },
-  { slug: "music", title: "Listening room", label: "Music", short: "Two songs from Not Shadman", color: "#9d7d9a", pale: "#eee5ef", icon: Music2 },
-  { slug: "library", title: "Library & research", label: "Library", short: "Papers, notes & current read", color: "#a48c58", pale: "#f4edcf", icon: BookOpen },
-  { slug: "journeys", title: "Travel wall", label: "Journeys", short: "Places visited, no dates invented", color: "#62899b", pale: "#e1edf0", icon: Map },
-  { slug: "garage", title: "Driving corner", label: "Garage", short: "A calm, fictional gear toy", color: "#667f7d", pale: "#e2ece9", icon: CarFront },
-  { slug: "garden", title: "Life garden", label: "Garden", short: "A few things beyond the screen", color: "#748d6c", pale: "#e4eddf", icon: Leaf },
-  { slug: "about", title: "The short version", label: "About", short: "For the straight-to-the-point visit", color: "#b27e69", pale: "#f2e6dc", icon: UserRound }
+  { slug: "studio", title: "Coding studio", label: "Studio", short: "Work, engineering & AI", color: "#7160a5", pale: "#ece7f6", icon: Code },
+  { slug: "arcade", title: "Game room", label: "Arcade", short: "Games, creators & current quests", color: "#c8786d", pale: "#f6e5e1", icon: GameController },
+  { slug: "music", title: "Music room", label: "Music", short: "Independent songs as Not Shadman", color: "#8771a2", pale: "#eee8f5", icon: MusicNotes },
+  { slug: "library", title: "Library", label: "Library", short: "Research papers & current reading", color: "#ac824a", pale: "#f6efdf", icon: BookOpen },
+  { slug: "journeys", title: "Travel wall", label: "Journeys", short: "Places that made it into the story", color: "#6683a0", pale: "#e6eef5", icon: MapTrifold },
+  { slug: "garage", title: "Garage", label: "Garage", short: "Cars, driving & a little gear toy", color: "#6d6687", pale: "#e9e6f1", icon: Car },
+  { slug: "garden", title: "Life garden", label: "Garden", short: "Friends, swimming & side quests", color: "#b27694", pale: "#f5e8f0", icon: Leaf },
+  { slug: "about", title: "About me", label: "About", short: "The person behind the rooms", color: "#b56f5f", pale: "#f6e6e1", icon: User }
 ];
