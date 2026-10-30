@@ -12,7 +12,7 @@ export function GitHubGarden() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch("/api/github-contributions", { signal: controller.signal })
+    fetch("/api/github-contributions.json", { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error("Contribution calendar unavailable");
         return response.json() as Promise<CalendarResponse>;

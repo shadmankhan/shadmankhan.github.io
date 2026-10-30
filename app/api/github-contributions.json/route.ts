@@ -1,5 +1,9 @@
 type ContributionDay = { date: string; level: number };
 
+// GitHub Pages has no server runtime. Export this GET route as a JSON snapshot
+// during `next build`; the calendar refreshes whenever the site is deployed.
+export const dynamic = "force-static";
+
 const dayTagPattern = /<td\b([^>]*)>/g;
 const datePattern = /\bdata-date="(\d{4}-\d{2}-\d{2})"/;
 const levelPattern = /\bdata-level="([0-4])"/;
@@ -15,12 +19,12 @@ export async function GET() {
         Accept: "text/html",
         "User-Agent": "ShadmanPortfolio/1.0 (public contribution calendar)",
       },
-      cache: "no-store",
+      cache: "force-cache",
       signal: AbortSignal.timeout(8000),
     });
 
     if (!response.ok) {
-      return Response.json({ days: [] }, { status: 502, headers: { "Cache-Control": "public, s-maxage=900" } });
+      return Response.json({ days: [] });
     }
 
     const fragment = await response.text();
@@ -32,11 +36,8 @@ export async function GET() {
     }
     const sortedDays = [...days.values()].sort((a, b) => a.date.localeCompare(b.date));
 
-    return Response.json(
-      { days: sortedDays },
-      { headers: { "Cache-Control": "public, s-maxage=21600, stale-while-revalidate=604800" } },
-    );
+    return Response.json({ days: sortedDays });
   } catch {
-    return Response.json({ days: [] }, { status: 502, headers: { "Cache-Control": "public, s-maxage=900" } });
+    return Response.json({ days: [] });
   }
 }

@@ -11,18 +11,19 @@ npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). For a production build:
+Open [http://localhost:3000](http://localhost:3000). To validate the production export:
 
 ```bash
 npm run typecheck
 npm run lint
 npm run build
-npm run start
 ```
+
+The static site is written to `out/`.
 
 ## Deploy
 
-The app is suitable for Vercel or another Node.js host. Import this repository, use the npm install command `npm ci`, and set the build command to `npm run build`. No environment variables, API keys, or server-side services are required. Set the Node.js runtime to 22 or later.
+GitHub Actions builds and deploys `out/` to GitHub Pages whenever `main` changes. In the repository, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The home page is exported to `out/index.html`; room routes are exported as directories so direct visits and refreshes work. The public GitHub contribution garden is a build-time snapshot and refreshes on each deployment. No environment variables or API keys are required.
 
 ## Content
 
@@ -46,7 +47,7 @@ The header keeps the four most-used destinations visible and puts every room in 
 
 ## Visual assets and sources
 
-The passport photo is not included in the project. The homepage puppet is an invented code-built character, not a portrait. The room hero scenes were generated for this site and exported as optimized WebP files. Game imagery comes from official game and platform pages and is shown as a personal interest gallery. A complete source list is in [`ASSET-MANIFEST.md`](./ASSET-MANIFEST.md). Google Fonts are self-hosted at build time by `next/font`; no font provider request is made by site visitors.
+The passport photo is not included in the project. The homepage puppet is an invented code-built character, not a portrait. Room photography is credited in [`ASSET-MANIFEST.md`](./ASSET-MANIFEST.md). Game imagery comes from official game and platform pages and is shown as a personal interest gallery. Google Fonts are self-hosted at build time by `next/font`; no font provider request is made by site visitors.
 
 | Asset or package | Use | License / attribution |
 | --- | --- | --- |
